@@ -9,7 +9,7 @@ public class Application implements GameLoop {
     public static final String COLOR = "#129CFE";
     public Screens currentScreen = Screens.HOME;
     // Create an array of screens
-    public Screen[] screens = new Screen[]{new Menu()};
+    public Screen[] screens = new Screen[]{new Menu(), new Slots()};
 
     public static void main(String[] args) {
         SaxionApp.startGameLoop(new Application(), 1024, 768, 600);
@@ -45,7 +45,7 @@ public class Application implements GameLoop {
                 break;
             case Screens.SLOTS:
                 SaxionApp.clear();
-                SaxionApp.drawBorderedText(currentScreen.getName(), 1, 1, 20);
+                screens[1].run();
                 break;
             case Screens.YATHZEE:
                 SaxionApp.clear();
@@ -76,7 +76,7 @@ public class Application implements GameLoop {
                 SaxionApp.drawBorderedText("Game mouse event?", 1, 1, 20);
                 break;
             case Screens.SLOTS:
-                //SaxionApp.printLine("Game Over");
+                screens[1].mouseEvent(mouseEvent, this);
                 break;
             case Screens.YATHZEE:
                 //SaxionApp.printLine("Game Over");
