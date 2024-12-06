@@ -1,3 +1,4 @@
+import nl.saxion.app.SaxionApp;
 import nl.saxion.app.interaction.KeyboardEvent;
 import nl.saxion.app.interaction.MouseEvent;
 
@@ -43,6 +44,8 @@ public class Menu extends Screen {
         for (MenuItem menuItem : menuItems) {
             menuItem.draw();
         }
+        SaxionApp.drawBorderedText("EJCino", 5, 5, 35);
+        SaxionApp.drawBorderedText("Speel onbewust 18-", 5, SaxionApp.getHeight() - 25, 25);
     }
 }
 
