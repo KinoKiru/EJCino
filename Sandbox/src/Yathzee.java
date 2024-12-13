@@ -1,3 +1,4 @@
+import nl.saxion.app.SaxionApp;
 import nl.saxion.app.interaction.KeyboardEvent;
 import nl.saxion.app.interaction.MouseEvent;
 
@@ -15,5 +16,10 @@ public class Yathzee extends Screen{
     @Override
     public void run() {
 
+    }
+
+    @Override
+    public void init() {
+        SaxionApp.clear();
     }
 }

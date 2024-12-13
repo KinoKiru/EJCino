@@ -11,4 +11,5 @@ public abstract class Screen {
 
     public abstract void run();
 
+    public abstract void init();
 }

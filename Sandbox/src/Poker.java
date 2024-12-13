@@ -1,7 +1,8 @@
+import nl.saxion.app.SaxionApp;
 import nl.saxion.app.interaction.KeyboardEvent;
 import nl.saxion.app.interaction.MouseEvent;
 
-public class Poker extends Screen{
+public class Poker extends Screen {
     @Override
     public void keyboardEvent(KeyboardEvent keyboardEvent, Application application) {
 
@@ -15,5 +16,10 @@ public class Poker extends Screen{
     @Override
     public void run() {
 
+    }
+
+    @Override
+    public void init() {
+        SaxionApp.clear();
     }
 }

@@ -35,12 +35,12 @@ public class Menu extends Screen {
             menuItems.add(new MenuItem(game, (index % 3) * 325 + 25, index >= 3 ? 400 : 50, 300, 300));
             index++;
         }
+        SaxionApp.clear();
     }
 
 
     @Override
     public void run() {
-        init();
         for (MenuItem menuItem : menuItems) {
             menuItem.draw();
         }
