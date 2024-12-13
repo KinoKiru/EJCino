@@ -19,7 +19,7 @@ public class Yathzee extends Screen{
     }
 
     @Override
-    public void init() {
+    public void init(Application application) {
         SaxionApp.clear();
     }
 }

@@ -7,10 +7,14 @@ import java.awt.*;
 
 public class Application implements GameLoop {
     public static final String COLOR = "#129CFE";
+    // Hold the current screen and is updated by the home
     public Screens currentScreen = Screens.HOME;
+    // If true, the init method will be called once
+    public boolean runInit = true;
+    public int money = 1000;
 
     // Create an array of screens
-    public Screen[] screens = new Screen[]{new Menu(), new Slots(), new Blackjack(), new Yathzee(), new HorseRacing(), new Roulette(), new Poker()};
+    public Screen[] screens = new Screen[]{new Home(), new Slots(), new Blackjack(), new Yathzee(), new HorseRacing(), new Roulette(), new Poker()};
 
     public static void main(String[] args) {
         SaxionApp.startGameLoop(new Application(), 1024, 768, 600);
@@ -52,6 +56,7 @@ public class Application implements GameLoop {
             }
             if (keyboardEvent.getKeyCode() == KeyboardEvent.VK_ESCAPE) {
                 currentScreen = Screens.HOME;
+                runInit = true;
             }
         }
     }
@@ -60,31 +65,31 @@ public class Application implements GameLoop {
     public void loop() {
         switch (currentScreen) {
             case Screens.HOME:
-                screens[0].init();
+                screens[0].init(this);
                 screens[0].run();
                 break;
             case Screens.BLACKJACK:
-                screens[2].init();
+                screens[2].init(this);
                 screens[2].run();
                 break;
             case Screens.SLOTS:
-                screens[1].init();
+                screens[1].init(this);
                 screens[1].run();
                 break;
             case Screens.YATHZEE:
-                screens[3].init();
+                screens[3].init(this);
                 screens[3].run();
                 break;
             case Screens.HORSE_RACING:
-                screens[4].init();
+                screens[4].init(this);
                 screens[4].run();
                 break;
             case Screens.ROULETTE:
-                screens[5].init();
+                screens[5].init(this);
                 screens[5].run();
                 break;
             case Screens.POKER:
-                screens[6].init();
+                screens[6].init(this);
                 screens[6].run();
                 break;
         }
@@ -115,6 +120,13 @@ public class Application implements GameLoop {
                 screens[6].mouseEvent(mouseEvent, this);
                 break;
         }
+    }
+
+    /// Draw the basic layout of the application
+    public void drawLayout() {
+        SaxionApp.drawBorderedText("EJCino", 5, 5, 35);
+        SaxionApp.drawBorderedText("Speel onbewust 18-", 5, SaxionApp.getHeight() - 25, 25);
+        SaxionApp.drawBorderedText("Money: " + this.money, 850 - (String.valueOf(this.money).length() * 10), 10, 35);
     }
 }
 

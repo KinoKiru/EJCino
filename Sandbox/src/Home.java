@@ -4,9 +4,9 @@ import nl.saxion.app.interaction.MouseEvent;
 
 import java.util.ArrayList;
 
-public class Menu extends Screen {
-
+public class Home extends Screen {
     private final ArrayList<MenuItem> menuItems = new ArrayList<>();
+    Application application;
 
     @Override
     public void keyboardEvent(KeyboardEvent keyboardEvent, Application application) {
@@ -21,12 +21,14 @@ public class Menu extends Screen {
                 if (mouseEvent.getX() >= menuItem.getX() && mouseEvent.getX() <= menuItem.getX() + menuItem.getWidth() &&
                         mouseEvent.getY() >= menuItem.getY() && mouseEvent.getY() <= menuItem.getY() + menuItem.getHeight()) {
                     application.currentScreen = menuItem.getName();
+                    application.runInit = true;
                 }
             }
         }
     }
 
-    public void init() {
+    public void init(Application application) {
+        this.application = application;
         int index = 0;
         for(Screens game : Screens.values()) {
             if (game == Screens.HOME) {
@@ -41,11 +43,10 @@ public class Menu extends Screen {
 
     @Override
     public void run() {
+        application.drawLayout();
         for (MenuItem menuItem : menuItems) {
             menuItem.draw();
         }
-        SaxionApp.drawBorderedText("EJCino", 5, 5, 35);
-        SaxionApp.drawBorderedText("Speel onbewust 18-", 5, SaxionApp.getHeight() - 25, 25);
     }
 }
 
