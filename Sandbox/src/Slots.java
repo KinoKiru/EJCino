@@ -27,6 +27,7 @@ public class Slots extends Screen {
                 SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 0, 100);
                 SaxionApp.drawImage("resources/slot_machine/slot-machine3.png", 1, 100);
                 SaxionApp.playSound("resources/audio/spin.wav", false);
+
                 for (int i = 0; i < 3; i++) {
                     int random = (int) (Math.random() * 4) + 1;
                     values.add(random);
@@ -52,11 +53,11 @@ public class Slots extends Screen {
 
     @Override
     public void run() {
+        SaxionApp.stopSound("resources/audio/spin.wav");
         SaxionApp.clear();
         this.application.drawLayout();
         SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 0, 100);
         SaxionApp.drawImage("resources/slot_machine/slot-machine2.png", 1, 100);
-
 
         if (!this.values.isEmpty()) {
             for (int i = 0; i < 3; i++) {

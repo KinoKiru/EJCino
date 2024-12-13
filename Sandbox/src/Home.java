@@ -34,7 +34,7 @@ public class Home extends Screen {
             if (game == Screens.HOME) {
                 continue;
             }
-            menuItems.add(new MenuItem(game, (index % 3) * 325 + 25, index >= 3 ? 400 : 50, 300, 300));
+            menuItems.add(new MenuItem(game, (index % 3) * 325 + 25, index >= 3 ? 400 : 50, 300, 300, "resources/menu/" + game.getName().toLowerCase().replace(" ", "") + ".png"));
             index++;
         }
         SaxionApp.clear();
