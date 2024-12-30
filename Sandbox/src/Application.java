@@ -11,7 +11,8 @@ public class Application implements GameLoop {
     public Screens currentScreen = Screens.HOME;
     // If true, the init method will be called once
     public boolean runInit = true;
-    public int money = 1000;
+    private final boolean dev = true;
+    public int money = dev ? 9000 : 1000;
 
     // Create an array of screens
     public Screen[] screens = new Screen[]{new Home(), new Slots(), new Blackjack(), new Yathzee(), new HorseRacing(), new Roulette(), new Poker()};
@@ -24,11 +25,17 @@ public class Application implements GameLoop {
     public void init() {
         SaxionApp.setBackgroundColor(Color.decode(COLOR));
         System.out.println("Application started");
-        SaxionApp.playSound("resources/audio/lobby.wav", true);
+        if (!dev) {
+            SaxionApp.playSound("resources/audio/lobby.wav", true);
+        }
     }
 
     @Override
     public void keyboardEvent(KeyboardEvent keyboardEvent) {
+        if (keyboardEvent.getKeyCode() == KeyboardEvent.VK_ESCAPE) {
+            currentScreen = Screens.HOME;
+            runInit = true;
+        }
         System.out.println(keyboardEvent.toString());
         if (keyboardEvent.isKeyPressed()) {
             switch (currentScreen) {
@@ -54,10 +61,7 @@ public class Application implements GameLoop {
                     screens[6].keyboardEvent(keyboardEvent, this);
                     break;
             }
-            if (keyboardEvent.getKeyCode() == KeyboardEvent.VK_ESCAPE) {
-                currentScreen = Screens.HOME;
-                runInit = true;
-            }
+
         }
     }
 
