@@ -11,7 +11,7 @@ public class Application implements GameLoop {
     public Screens currentScreen = Screens.HOME;
     // If true, the init method will be called once
     public boolean runInit = true;
-    private final boolean dev = true;
+    private final boolean dev = false;
     public int money = dev ? 9000 : 1000;
 
     // Create an array of screens
@@ -128,6 +128,8 @@ public class Application implements GameLoop {
 
     /// Draw the basic layout of the application
     public void drawLayout() {
+        SaxionApp.setFill(Color.white);
+        SaxionApp.setBorderColor(Color.black);
         SaxionApp.drawBorderedText("EJCino", 5, 5, 35);
         SaxionApp.drawBorderedText("Speel onbewust 18-", 5, SaxionApp.getHeight() - 25, 25);
         SaxionApp.drawBorderedText("Money: " + this.money, 850 - (String.valueOf(this.money).length() * 10), 10, 35);

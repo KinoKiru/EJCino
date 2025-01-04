@@ -77,11 +77,11 @@ public class Button {
 
     /// Draw the button
     public void draw() {
-        SaxionApp.setBorderColor(borderColor);
-        SaxionApp.setFill(fillColor);
-        SaxionApp.setTextDrawingColor(textColor);
+        SaxionApp.setBorderColor(buttonClicked ? Color.black : borderColor);
+        SaxionApp.setFill(buttonClicked ?  Color.gray : fillColor);
         SaxionApp.drawRectangle(x, y, width, height);
-        SaxionApp.drawBorderedText(text, x + (width / 2) - (text.length() * 6), y + (height - 50), 30);
+        SaxionApp.setTextDrawingColor(textColor);
+        SaxionApp.drawBorderedText(text, x + (width / 2) - (text.length() * 6), y + (height - 32), 27);
     }
 
     public Color getFillColor() {

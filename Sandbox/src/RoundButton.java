@@ -23,13 +23,12 @@ public class RoundButton extends Button {
         this.radius = radius;
     }
 
-    @Override
-    public void draw() {
-        SaxionApp.setFill(this.getFillColor());
+    public void draw(boolean ignoreClicked) {
+        SaxionApp.setFill(ignoreClicked ? this.getFillColor() : (this.isButtonClicked() ?  Color.gray : this.getFillColor()));
         SaxionApp.setBorderColor(this.getBorderColor());
         SaxionApp.setTextDrawingColor(this.getTextColor());
         SaxionApp.setBorderSize(5);
         SaxionApp.drawCircle(this.getX(), this.getY(), this.getRadius());
-        SaxionApp.drawText(this.getText(), this.getText().length() == 3 ? this.getX() - 30 : this.getX() - 20, this.getY() - 20, 40);
+        SaxionApp.drawText(this.getText(),  this.getX() - (this.getText().length() * 10), this.getY() - 20, 40);
     }
 }
