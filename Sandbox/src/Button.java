@@ -79,8 +79,9 @@ public class Button {
     public void draw() {
         SaxionApp.setBorderColor(buttonClicked ? Color.black : borderColor);
         SaxionApp.setFill(buttonClicked ?  Color.gray : fillColor);
-        SaxionApp.drawRectangle(x, y, width, height);
-        SaxionApp.setTextDrawingColor(textColor);
+        SaxionApp.drawRectangle(x, y, width + text.length(), height);
+        SaxionApp.setTextDrawingColor(fillColor);
+        SaxionApp.setFill(textColor);
         SaxionApp.drawBorderedText(text, x + (width / 2) - (text.length() * 6), y + (height - 32), 27);
     }
 

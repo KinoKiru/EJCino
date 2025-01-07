@@ -116,7 +116,8 @@ public class Roulette extends Screen {
             ArrayList<Button> clickedButtons = numberButtons.stream().filter(Button::isButtonClicked).collect(Collectors.toCollection(ArrayList::new));
             // Handle spin button
             if (mouseX >= spinButton.getX() - spinButton.getRadius() && mouseX <= spinButton.getX() + spinButton.getRadius() &&
-                    mouseY >= spinButton.getY() - spinButton.getRadius() && mouseY <= spinButton.getY() + spinButton.getRadius() && betAmount > 0 && !clickedButtons.isEmpty()) {
+                    mouseY >= spinButton.getY() - spinButton.getRadius() && mouseY <= spinButton.getY() + spinButton.getRadius() && betAmount > 0 &&
+                    !clickedButtons.isEmpty() && application.money >= (betAmount * clickedButtons.size())) {
                 application.money -= (betAmount * clickedButtons.size());
                 int winningNumber = (int) (Math.random() * 36);
                 resultButton.setText(String.valueOf(winningNumber));
@@ -189,6 +190,7 @@ public class Roulette extends Screen {
     public void run() {
         if (!questionButton.isButtonClicked()) {
             SaxionApp.clear();
+            SaxionApp.drawImage("resources/RouletteBackground.png", 0, 0); //roulette background
             application.drawLayout();
             drawButtons();
         }
@@ -215,15 +217,15 @@ public class Roulette extends Screen {
             this.application = application;
             SaxionApp.clear();
             System.out.println("Roulette init");
-            betButtons.add(new RoundButton(475, 675, 50, "10", Color.red, Color.red, Color.black, false));
-            betButtons.add(new RoundButton(600, 675, 50, "20", Color.green, Color.green, Color.black, false));
-            betButtons.add(new RoundButton(725, 675, 50, "50", Color.blue, Color.blue, Color.black, false));
-            betButtons.add(new RoundButton(850, 675, 50, "100", Color.magenta, Color.magenta, Color.black, false));
-            betButtons.add(new RoundButton(975, 675, 50, "200", Color.yellow, Color.yellow, Color.black, false));
+            betButtons.add(new RoundButton(450, 675, 50, "10", Color.red, Color.red, Color.black, false));
+            betButtons.add(new RoundButton(575, 675, 50, "20", Color.green, Color.green, Color.black, false));
+            betButtons.add(new RoundButton(700, 675, 50, "50", Color.blue, Color.blue, Color.black, false));
+            betButtons.add(new RoundButton(825, 675, 50, "100", Color.magenta, Color.magenta, Color.black, false));
+            betButtons.add(new RoundButton(950, 675, 50, "200", Color.yellow, Color.yellow, Color.black, false));
 
-            //SaxionApp.drawImage("resources/RouletteBackground.png", 0, 0); //roulette background
+            SaxionApp.drawImage("resources/RouletteBackground.png", 0, 0); //roulette background
 
-            numberButtons.add(new Button(800, 75, 210, 50, "0", Color.green, Color.green, Color.black, false));
+            numberButtons.add(new Button(800, 75, 210, 50, "0", Color.green, Color.green, Color.white, false));
 
             int buttonX = 550;
             int buttonY = 150;
@@ -241,26 +243,26 @@ public class Roulette extends Screen {
                 }
             }
 
-            numberButtons.add(new Button(550, 450, 140, 40, "First 2/1", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(710, 450, 140, 40, "Second 2/1", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(870, 450, 140, 40, "Third 2/1", Color.green, Color.green, Color.black, false));
+            numberButtons.add(new Button(550, 450, 140, 40, "First 2/1", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(710, 450, 140, 40, "Second 2/1", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(870, 450, 140, 40, "Third 2/1", Color.green, Color.green, Color.white, false));
 
-            numberButtons.add(new Button(550, 510, 140, 40, "1st 12", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(710, 510, 140, 40, "2nd 12", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(870, 510, 140, 40, "3rd 12", Color.green, Color.green, Color.black, false));
+            numberButtons.add(new Button(550, 510, 140, 40, "1st 12", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(710, 510, 140, 40, "2nd 12", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(870, 510, 140, 40, "3rd 12", Color.green, Color.green, Color.white, false));
 
-            numberButtons.add(new Button(550, 565, 65, 35, "Odd", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(630, 565, 65, 35, "Even", Color.green, Color.green, Color.black, false));
+            numberButtons.add(new Button(550, 565, 65, 35, "Odd", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(630, 565, 65, 35, "Even", Color.green, Color.green, Color.white, false));
 
-            numberButtons.add(new Button(710, 565, 65, 35, "Red", Color.red, Color.red, Color.black, false));
+            numberButtons.add(new Button(710, 565, 65, 35, "Red", Color.red, Color.red, Color.white, false));
             numberButtons.add(new Button(790, 565, 65, 35, "Black", Color.black, Color.black, Color.white, false));
 
-            numberButtons.add(new Button(870, 565, 65, 35, "1-18", Color.green, Color.green, Color.black, false));
-            numberButtons.add(new Button(950, 565, 65, 35, "19-36", Color.green, Color.green, Color.black, false));
+            numberButtons.add(new Button(870, 565, 65, 35, "1-18", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(950, 565, 65, 35, "19-36", Color.green, Color.green, Color.white, false));
 
             resetButton = new Button(45, 560, 110, 50, "Reset", Color.red, Color.red, Color.black, false);
             questionButton = new RoundButton(400, 50, 30, " ?", false);
-            spinButton = new RoundButton(475, 550, 50, "Spin", Color.orange, Color.orange, Color.black, false);
+            spinButton = new RoundButton(450, 550, 50, "Spin", Color.orange, Color.orange, Color.black, false);
             resultButton = new RoundButton(250, 355, 100, "", false);
 
             drawButtons();
