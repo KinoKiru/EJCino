@@ -25,8 +25,9 @@ public class Slots extends Screen {
                     this.application.money -= 100;
                     values.clear();
                     SaxionApp.clear();
-                    SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 0, 100);
-                    SaxionApp.drawImage("resources/slot_machine/slot-machine3.png", 1, 100);
+                    SaxionApp.drawImage("resources/street.png", 0, 0, 1024, 768);
+                    SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 100, 100);
+                    SaxionApp.drawImage("resources/slot_machine/slot-machine3.png", 101, 100);
                     SaxionApp.playSound("resources/audio/spin.wav", false);
 
                     for (int i = 0; i < 3; i++) {
@@ -59,13 +60,14 @@ public class Slots extends Screen {
     public void run() {
 //        SaxionApp.stopSound("resources/audio/spin.wav");
         SaxionApp.clear();
+        SaxionApp.drawImage("resources/street.png", 0, 0, 1024, 768);
         this.application.drawLayout();
-        SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 0, 100);
-        SaxionApp.drawImage("resources/slot_machine/slot-machine2.png", 1, 100);
+        SaxionApp.drawImage("resources/slot_machine/slot-machine1.png", 100, 100);
+        SaxionApp.drawImage("resources/slot_machine/slot-machine2.png", 101, 100);
 
         if (!this.values.isEmpty()) {
             for (int i = 0; i < 3; i++) {
-                SaxionApp.drawImage("resources/slot_machine/slot-symbol" + values.get(i) + ".png", (i * 130) + 235, 400);
+                SaxionApp.drawImage("resources/slot_machine/slot-symbol" + values.get(i) + ".png", (i * 130) + 335, 400);
             }
             if (values.stream().allMatch(i -> Objects.equals(i, values.getFirst()))) {
                 SaxionApp.drawBorderedText("You won! +" + values.getFirst() + "00", 100, 50, 50);

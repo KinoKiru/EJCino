@@ -19,14 +19,13 @@ public class MenuButton extends Button {
     @Override
     public void draw() {
         SaxionApp.setBorderColor(Color.YELLOW);
-        SaxionApp.setFill(Color.WHITE);
-        SaxionApp.turnFillOff();
+        SaxionApp.setFill(Color.black);
         SaxionApp.drawRectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+        SaxionApp.setFill(Color.WHITE);
         SaxionApp.setTextDrawingColor(Color.BLACK);
-        SaxionApp.turnFillOn();
         SaxionApp.drawBorderedText(this.getText(), this.getX() + (this.getWidth() / 2) - (this.getText().length() * 6), this.getY() + (this.getHeight() - 50), 30);
-        int height = Arrays.stream(new String[]{"SLOTS", "BLACKJACK", "POKER"}).anyMatch(s -> s.equalsIgnoreCase(this.getText())) ? 200 : 150;
-        int width = Arrays.stream(new String[]{"SLOTS", "BLACKJACK", "POKER"}).anyMatch(s -> s.equalsIgnoreCase(this.getText())) ? 200 : 150;
-        SaxionApp.drawImage(filePath, this.getX() + 50, this.getY() + 50, width, height);
+        int height = Arrays.stream(new String[]{"SLOTS", "BLACKJACK", "POKER"}).anyMatch(s -> s.equalsIgnoreCase(this.getText())) ? 210 : 150;
+        int width = Arrays.stream(new String[]{"SLOTS", "BLACKJACK", "POKER"}).anyMatch(s -> s.equalsIgnoreCase(this.getText())) ? 175 : 150;
+        SaxionApp.drawImage(filePath, this.getX() + (width == 175 ? 60 : 80), this.getY() + 40, width, height);
     }
 }

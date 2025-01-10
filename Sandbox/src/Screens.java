@@ -3,7 +3,6 @@ public enum Screens {
     BLACKJACK("Blackjack"),
     POKER("Poker"),
     SLOTS("Slots"),
-    YATHZEE("Yathzee"),
     HORSE_RACING("Horse Racing"),
     HOME("Home"),
     ROULETTE("Roulette");
