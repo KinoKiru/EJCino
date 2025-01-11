@@ -11,7 +11,7 @@ public class Application implements GameLoop {
     public Screens currentScreen = Screens.HOME;
     // If true, the init method will be called once
     public boolean runInit = true;
-    private final boolean dev = false;
+    private final boolean dev = true;
     public int money = dev ? 9000 : 1000;
 
     // Create an array of screens
