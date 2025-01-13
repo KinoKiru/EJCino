@@ -20,6 +20,11 @@ public class Blackjack extends Screen{
 
     @Override
     public void init(Application application) {
-        SaxionApp.clear();
+        if (application.runInit) {
+            SaxionApp.clear();
+            SaxionApp.drawImage("resources/blackjack.png", 0, 0, 1024, 768);
+            application.drawLayout();
+            application.runInit = false;
+        }
     }
 }

@@ -215,6 +215,7 @@ public class Roulette extends Screen {
     public void init(Application application) {
         if (application.runInit) {
             this.application = application;
+            SaxionApp.setGameLoopTimeMs(1500);
             SaxionApp.clear();
             System.out.println("Roulette init");
             betButtons.add(new RoundButton(450, 675, 50, "10", Color.red, Color.red, Color.black, false));
@@ -225,17 +226,17 @@ public class Roulette extends Screen {
 
             SaxionApp.drawImage("resources/RouletteBackground.png", 0, 0); //roulette background
 
-            numberButtons.add(new Button(800, 75, 210, 50, "0", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(865, 75, 80, 50, "0", Color.green, Color.green, Color.white, false));
 
             int buttonX = 550;
-            int buttonY = 150;
+            int buttonY = 145;
 
             // Add buttons for numbers 1-36
             for (int buttons1 = 1; buttons1 <= 36; buttons1++) {
                 int finalI = buttons1;
                 Color color = Arrays.stream(blackTiles).anyMatch(e -> e == finalI) ? Color.black : Color.red;
                 // TODO: look into color issue with the text color not correctly set
-                numberButtons.add(new Button(buttonX, buttonY, 60, 35, String.valueOf(buttons1), color, color, Color.white, false));
+                numberButtons.add(new Button(buttonX, buttonY, 70, 40, String.valueOf(buttons1), color, color, Color.white, false));
                 buttonX += 80;
                 if (buttons1 % 6 == 0) {
                     buttonX = 550;
@@ -247,9 +248,9 @@ public class Roulette extends Screen {
             numberButtons.add(new Button(710, 450, 140, 40, "Second 2/1", Color.green, Color.green, Color.white, false));
             numberButtons.add(new Button(870, 450, 140, 40, "Third 2/1", Color.green, Color.green, Color.white, false));
 
-            numberButtons.add(new Button(550, 510, 140, 40, "1st 12", Color.green, Color.green, Color.white, false));
-            numberButtons.add(new Button(710, 510, 140, 40, "2nd 12", Color.green, Color.green, Color.white, false));
-            numberButtons.add(new Button(870, 510, 140, 40, "3rd 12", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(550, 500, 145, 50, "1st 12", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(710, 500, 145, 50, "2nd 12", Color.green, Color.green, Color.white, false));
+            numberButtons.add(new Button(870, 500, 145, 50, "3rd 12", Color.green, Color.green, Color.white, false));
 
             numberButtons.add(new Button(550, 565, 65, 35, "Odd", Color.green, Color.green, Color.white, false));
             numberButtons.add(new Button(630, 565, 65, 35, "Even", Color.green, Color.green, Color.white, false));
