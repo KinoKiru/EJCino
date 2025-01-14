@@ -67,8 +67,8 @@ public class HorseRacing extends Screen {
             }
 
             for (RoundButton button : numberButtons) {
-                if (mouseX >= button.getX() - 50 && mouseX <= button.getX() + 50 &&
-                        mouseY >= button.getY() - 50 && mouseY <= button.getY() + 50) {
+                if (mouseX >= button.getX() - button.getRadius() && mouseX <= button.getX() + button.getRadius() &&
+                        mouseY >= button.getY() - button.getRadius() && mouseY <= button.getY() + button.getRadius()) {
                     button.setButtonClicked(!button.isButtonClicked());
                     button.draw(false);
                     drawInformationBox();
@@ -106,27 +106,27 @@ public class HorseRacing extends Screen {
 
                             SaxionApp.setBorderColor(darkGreenGround);
                             SaxionApp.setFill(darkGreenGround);
-                            SaxionApp.drawCircle(275, 285, 25);
+                            SaxionApp.drawCircle(275, 290, 25);
 
                             SaxionApp.setBorderColor(ownGreen);
                             SaxionApp.setFill(ownGreen);
-                            SaxionApp.drawCircle(280, 340, 25);
+                            SaxionApp.drawCircle(280, 346, 25);
 
                             SaxionApp.setBorderColor(darkGreenGround);
                             SaxionApp.setFill(darkGreenGround);
-                            SaxionApp.drawCircle(285, 395, 25);
+                            SaxionApp.drawCircle(285, 405, 25);
 
                             SaxionApp.setBorderColor(ownGreen);
                             SaxionApp.setFill(ownGreen);
-                            SaxionApp.drawCircle(290, 455, 25);
+                            SaxionApp.drawCircle(290, 465, 25);
 
                             SaxionApp.setBorderColor(darkGreenGround);
                             SaxionApp.setFill(darkGreenGround);
-                            SaxionApp.drawCircle(295, 515, 25);
+                            SaxionApp.drawCircle(295, 525, 25);
 
                             SaxionApp.setBorderColor(ownGreen);
                             SaxionApp.setFill(ownGreen);
-                            SaxionApp.drawCircle(300, 565, 25);
+                            SaxionApp.drawCircle(300, 582, 25);
 
                             SaxionApp.setTextDrawingColor(Color.yellow);
                             SaxionApp.setBorderColor(Color.BLACK);
@@ -158,10 +158,10 @@ public class HorseRacing extends Screen {
                             SaxionApp.setBorderSize(3);
                             SaxionApp.setBorderColor(Color.BLACK);
                             if (winningHorse == 1) {
-                                SaxionApp.drawText("Horse 1 won!", 550, 50, 50);
+                                SaxionApp.drawText("Horse 1 won!", 400, 50, 50);
                                 SaxionApp.drawImage("resources/horse/5420053-copy.png", 300, 200, 550, 200);
                             } else {
-                                SaxionApp.drawText("Horse " + winningHorse + " won!", 550, 50, 50);
+                                SaxionApp.drawText("Horse " + winningHorse + " won!", 400, 50, 50);
                                 SaxionApp.drawImage("resources/horse/horse" + winningHorse + ".png", 300, 200, 550, 400);
                             }
                             cancel();
@@ -244,7 +244,7 @@ public class HorseRacing extends Screen {
             }
             reset.draw(true, 20);
             start.draw(true);
-
+            application.drawLayout();
             application.runInit = false;
         }
     }
