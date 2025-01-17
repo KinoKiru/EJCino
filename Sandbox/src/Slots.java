@@ -35,7 +35,7 @@ public class Slots extends Screen {
                         values.add(random);
                     }
                     if (values.stream().allMatch(i -> Objects.equals(i, values.getFirst()))) {
-                        this.application.money += values.getFirst() * 100;
+                        this.application.money += (values.getFirst() * 100) + 100;
                     }
                 } else {
                     SaxionApp.drawBorderedText("Not enough money", 100, 50, 50);
